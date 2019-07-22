@@ -99,7 +99,16 @@ angular.module('pbnApp')
   	  return imgData;
       };
       
-      
+      var convertToDevanagri = function(label) {
+          //assume that the labels don't go above 99
+          var uniValue=2406+((label)%10);
+          var tenValue=2406+parseInt(label/10);
+          var str=String.fromCharCode(parseInt(uniValue,10));
+          if(tenValue > 2406)
+              str=String.fromCharCode(parseInt(tenValue,10))+String.fromCharCode(parseInt(uniValue,10));
+          return str;
+      }
+
       var displayResults = function(matSmooth, matLine, labelLocs) {
   	  var c2 = document.getElementById("filled-canvas");
   	  c2.width = $scope.c.width;
@@ -123,10 +132,10 @@ angular.module('pbnApp')
   	  ctx3.putImageData(imgData, 0, 0);
 
   	  // draw numbers
-  	  ctx3.font = "12px Georgia";
+  	  ctx3.font = "14px Baloo";
   	  ctx3.fillStyle = "rgb(150, 150, 150)";
   	  for (var i = 0; i < labelLocs.length; i++) {
-  	      ctx3.fillText(labelLocs[i].value + 1,
+          ctx3.fillText(convertToDevanagri(labelLocs[i].value + 1),
 			    labelLocs[i].x - 3,
 			    labelLocs[i].y + 4);
   	  }
@@ -321,10 +330,10 @@ angular.module('pbnApp')
   	      ctx.fillRect(x + 10, y + 10, 60, 60);
   	      ctx.fillStyle = "#ffffff";
   	      ctx.fillRect(x + 10, y + 10, 20, 20);
-  	      ctx.font = '16px sans-serif';
+  	      ctx.font = '30px Baloo';
   	      ctx.fillStyle = "#000000";
   	      ctx.textAlign = "center";
-  	      ctx.fillText(i + 1, x + 20, y + 26);
+  	      ctx.fillText(convertToDevanagri(i + 1), x + 20, y + 26);
   	      ctx.strokeRect(x + 10, y + 10, 60, 60);
   	  }
 
