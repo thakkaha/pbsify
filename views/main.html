@@ -1,13 +1,13 @@
 <div class="col" id="header">
-	<img id="title" src="images/logo-02.png">
-	<div id="subtitle">custom paint by number generator</div>
+	<!-- <img id="title" src="images/logo-02.png"> -->
+	<div id="subtitle">custom paint by "sankhyaa" (number in Sanskrit) generator</div>
 </div>
 
 
 <div class="col" id="description">
 	<p ng-class="{ 'other-step': step != 'load' }">1. Load an image</p>
 	<p ng-class="{ 'other-step': step != 'select' }">2. Click some points on the image to select your color palette</p>
-	<p ng-class="{ 'other-step': step != 'select' || palette.length < 2 }">3. Click PBNify and the image will be converted to a paint by number template</p>
+	<p ng-class="{ 'other-step': step != 'select' || palette.length < 2 }">3. Click PBSify and the image will be converted to a paint by number template</p>
 	<p ng-class="{ 'other-step': step != 'result' }">4. Save the outline and palette, print them out, and paint/color</p>
 	<p ng-class="'other-step'"><em>Privacy note: Your image will only be loaded into the browser on your computer. Nothing will be uploaded anywhere.</em></p>
 </div>
@@ -26,7 +26,7 @@
 	<div id="buttons" ng-show="step != 'process'">
 		<div type="button" class="btn btn-default" ng-click="newImage()" ng-show="step == 'select' || step == 'result'">new image</div>
 		<div type="button" class="btn btn-default" ng-click="clearPalette()" ng-show="step == 'select' && palette.length > 0">clear palette</div>
-		<div type="button" class="btn btn-primary" ng-click="pbnify()" ng-show="step == 'select' && palette.length > 1">PBNify</div>
+		<div type="button" class="btn btn-primary" ng-click="pbnify()" ng-show="step == 'select' && palette.length > 1">PBSify</div>
 		<div type="button" class="btn btn-default" ng-click="recolor()" ng-show="step == 'result'">recolor</div>
 		<div class="btn-group" role="group" ng-show="step == 'result'">
 			<div type="button" class="btn btn-primary" ng-click="viewFilled()" ng-show="step == 'result'">filled</div>
